@@ -147,6 +147,8 @@ export class AdminDiscountsComponent {
       this.discountForm.patchValue({
         img:[null]
       })
+    },()=>{
+      this.isUploaded = false
     })
     this.showProgress = false
     this.deletedImg = true

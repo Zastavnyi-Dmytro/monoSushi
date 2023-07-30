@@ -41,8 +41,8 @@
                 <td>{{item.description}}</td>
                 <td><img src="{{item.img}}"></td>
                 <td class="tr-btns">
-                    <a (click)="editDiscount(item)">Редагувати</a>
-                    <a (click)="deleteDiscount(item)">Видалити</a>
+                    <button (click)="editDiscount(item)">Редагувати</button>
+                    <button [disabled]="editMode" (click)="deleteDiscount(item)">Видалити</button>
                 </td>
             </tr>
         </table>

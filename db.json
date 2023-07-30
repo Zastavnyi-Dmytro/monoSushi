@@ -1,4 +1,20 @@
 {
-  "discounts": [],
-  "categories": []
+  "discounts": [
+    {
+      "name": "qwe",
+      "title": "as",
+      "description": "dasd",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F3.png?alt=media&token=b4f556b4-0f50-4555-bb1a-3deaeae9e48b",
+      "date": "2023-07-30T16:39:09.023Z",
+      "id": 1
+    }
+  ],
+  "categories": [
+    {
+      "name": "qwe",
+      "path": "qwe",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F0KOc3tuHqsI.jpg?alt=media&token=e1b24fbd-2738-4627-8277-bcef3568fba0",
+      "id": 1
+    }
+  ]
 }

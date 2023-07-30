@@ -38,8 +38,8 @@
                 <td>{{item.path}}</td>
                 <td><img src="{{item.img}}"></td>
                 <td class="tr-btns">
-                    <a (click)="editCategory(item)">Редагувати</a>
-                    <a (click)="deleteCategory(item)">Видалити</a>
+                    <button (click)="editCategory(item)">Редагувати</button>
+                    <button [disabled]="editMode" (click)="deleteCategory(item)">Видалити</button>
                 </td>
             </tr>
         </table>

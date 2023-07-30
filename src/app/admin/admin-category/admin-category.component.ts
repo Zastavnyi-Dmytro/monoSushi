@@ -142,6 +142,8 @@ export class AdminCategoryComponent {
       this.categoryForm.patchValue({
         img:[null]
       })
+    },()=>{
+      this.isUploaded = false
     })
     this.deletedImg = true
     this.showProgress = false
