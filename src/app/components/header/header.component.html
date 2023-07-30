@@ -1,0 +1,64 @@
+<div class="container">
+    <a href="" class="header-logo">
+        <img src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="">
+    </a>
+    <div class="header-navbar">
+        <ul>
+            <li><a [routerLink]="[ '/discounts']" routerLinkActive="active">
+                    <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-gift.svg" alt="">
+                    <span>Акції</span>
+                </a></li>
+            <li><a [routerLink]="[ '/products/rolls']" routerLinkActive="active">
+                    <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg" alt="">
+                    <span>Роли</span>
+                </a></li>
+            <li><a [routerLink]="[ '/products/sets']" routerLinkActive="active">
+                    <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-sets.svg" alt="">
+                    <span>Сети</span>
+                </a></li>
+            <li><a [routerLink]="[ '/products/drinks']" routerLinkActive="active">
+                    <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-drinks.svg" alt="">
+                    <span>Напої </span>
+                </a></li>
+            <li><a [routerLink]="[ '/products/sauces']" routerLinkActive="active">
+                    <img src="https://monosushi.com.ua/wp-content/uploads/2021/09/icon.svg" alt="">
+                    <span>Соуси</span>
+                </a></li>
+        </ul>
+    </div>
+    <div class="header-burger" [class.open-burger]="burgerSwitch">
+        <div id="nav-icon3" [class.open]="burgerSwitch" (click)="openBurger()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="burger-module" *ngIf="burgerSwitch">
+            <div class="module-container">
+                <ul>
+                    <li><a [routerLink]="[ '/delivery-and-payment']" routerLinkActive="active" (click)="closeBurger()">Доставка та оплата</a></li>
+                    <li><a [routerLink]="[ '/about-us']" routerLinkActive="active" (click)="closeBurger()">Про нас</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header-callback">
+        <button class="btn">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="">
+            <span>МИ ЗАТЕЛЕФОНУЄМО</span>
+        </button>
+    </div>
+    <div class="header-info">
+        <a href="" class="header-phone">(097) 878 08 37</a>
+        <div class="header-work-time">Працюємо з <b>11:00</b> до <b>22:30</b></div>
+    </div>
+    <div class="header-user" [routerLink]="[ '/admin/discounts']" routerLinkActive="active">
+        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
+    </div>
+    <div class="header-basket">
+        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="">
+        <span>0</span>
+        <span>грн</span>
+    </div>
+</div>
+

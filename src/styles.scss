@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'RotondaC';
+    src: url('assets/custom-font/rotondac.otf') format('truetype');
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'RotondaC', sans-serif;
+    a{
+      text-decoration:none;
+    }
+}

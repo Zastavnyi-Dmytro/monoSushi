@@ -1,0 +1,86 @@
+.header-margin{
+    height: 110px;
+}
+
+.container{
+    width: 100%;
+    max-width: 1750px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.banners{
+    display: flex;
+    justify-content: space-between;
+    img{
+        border-radius: 8px;
+    }
+}
+
+.after-banner-container{
+    width: 100%;
+    background-color: #b5d8f7;
+    margin-top: 82px;
+    border-radius: 8px;
+    background-image: url(https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg) , url(https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg);
+    background-repeat: repeat;
+    background-position: 0 0 , 190px -52px;
+}
+
+.after-banner{
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 0;
+    .delivery-zone{
+        display: flex;
+        align-items: center;
+        img{
+            width: 135px;
+            height: 87px;
+            margin-right: 35px;
+        }
+        .btn{
+            padding: 16px 22px;
+            border: 2px solid #fff;
+            background-color: #fff;
+            border-radius: 10px;
+            color: black;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn:hover{
+            background-color: #b5d8f7;
+        }
+    }
+    .delivery-time{
+        display: flex;
+        align-items: center;
+        img{
+            width: 90px;
+            height: 81px;
+            margin-right: 35px;
+        }
+    }
+    .work-time{
+        display: flex;
+        align-items: center;
+        img{
+            width: 75px;
+            height: 94px;
+            margin-right: 35px;
+        }
+    }
+    .after-banner-info{
+        text-align: center;
+        font-size: 18px;
+    }
+}
+
+
+
+
+

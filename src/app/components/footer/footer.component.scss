@@ -1,0 +1,158 @@
+.footer-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 35px;
+    padding: 20px 0;
+}
+
+.footer-logo{
+    img{
+        width: 136px;
+        height: 51px;
+    }
+}
+
+ul{
+    display: flex;
+    list-style-type:none;
+}
+
+.footer-menu li{
+    display: flex;
+    margin-left: 55px;
+    a{
+        color: black;
+    }
+    a:hover{
+        color: #b5d8f7;
+    }
+}
+
+ul li:first-child{
+    margin-left: 0;
+}
+
+.footer-info{
+    display: flex;
+    justify-content: space-between;
+    max-width: 43%;
+    width: 100%;
+}
+
+.delivery-address{
+    display: flex;
+    flex-direction: column;
+    span{
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        li{
+            color: #5a5a5a;
+        }
+    }
+}
+
+.order-phone{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    span{
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    a{
+        color: #5a5a5a;
+    }
+}
+
+.work-time{
+    display: flex;
+    flex-direction: column;
+    span{
+        align-items: center;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .bold{
+        font-weight: bold;
+    }
+    .grey{
+        color: #5a5a5a;
+    }
+}
+
+.footer-bottom{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+    margin: 0 35px;
+}
+
+.paycards{
+    display: flex;
+    justify-content: space-between;
+}
+
+.paycard {
+    width: 69px;
+    height: 39px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.social{
+    display: flex;
+    align-items: center;
+    span{
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    ul{
+        display: flex;
+    }
+}
+
+.icon-btn{
+    display: flex;
+    width: 49px;
+    height: 49px;
+    background-color: #b5d8f7;
+    border: 2px solid #b5d8f7;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    img{
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.develope{
+    display: flex;
+    align-items: center;
+    span{
+        color:#5a5a5a;
+        margin-right: 5px;
+    }
+    a{
+        img{
+            margin-top: 5px;
+            width: 75px;
+            height: 23px;
+        }
+    }
+}
+
