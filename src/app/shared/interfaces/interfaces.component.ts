@@ -29,6 +29,25 @@ export interface CategoryRequest{
   img:string
 }
 
+export interface Products {
+  id:number,
+  path:string,
+  name:string,
+  ingredients:string,
+  weight:number,
+  price:number,
+  img:string
+}
+
+export interface ProductsRequest {
+  path:string,
+  name:string,
+  ingredients:string,
+  weight:number,
+  price:number,
+  img:string
+}
+
 @Component({
   selector: 'app-interfaces',
   templateUrl: './interfaces.component.html',

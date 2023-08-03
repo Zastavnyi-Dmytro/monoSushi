@@ -1,20 +1,59 @@
 {
-  "discounts": [
-    {
-      "name": "qwe",
-      "title": "as",
-      "description": "dasd",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F3.png?alt=media&token=b4f556b4-0f50-4555-bb1a-3deaeae9e48b",
-      "date": "2023-07-30T16:39:09.023Z",
-      "id": 1
-    }
-  ],
+  "discounts": [],
   "categories": [
     {
-      "name": "qwe",
-      "path": "qwe",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F0KOc3tuHqsI.jpg?alt=media&token=e1b24fbd-2738-4627-8277-bcef3568fba0",
+      "name": "Суші",
+      "path": "sushi",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=8e72fb65-040b-4abc-a7c9-8bc0b5956b17",
+      "id": 2
+    },
+    {
+      "name": "Напої",
+      "path": "drinks",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2Fcola2.jpg?alt=media&token=f4588ab9-0371-47b1-96f9-f272d1c0b408",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "path": "sushi",
+      "name": "Філадельфія",
+      "ingredients": "огірок",
+      "weight": "129",
+      "price": "150",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=cb4506f9-0314-40cf-882e-c86e88b5ae3b",
+      "category": null,
       "id": 1
+    },
+    {
+      "path": "sushi",
+      "name": "Канзас",
+      "ingredients": "Помідор",
+      "weight": "100",
+      "price": "50",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=038bda69-bfaf-4ede-bd6e-5d79284ebbc4",
+      "category": null,
+      "id": 2
+    },
+    {
+      "path": "sushi",
+      "name": "Огірочки",
+      "ingredients": "соус",
+      "weight": "15",
+      "price": "90",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=7224afe3-434f-4c87-889d-cbd92917e38d",
+      "category": null,
+      "id": 3
+    },
+    {
+      "path": "sushi",
+      "name": "Булочка",
+      "ingredients": "сир",
+      "weight": "152",
+      "price": "122",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=a52e5d33-affe-4719-8508-4c55ecb43b80",
+      "category": null,
+      "id": 4
     }
   ]
 }

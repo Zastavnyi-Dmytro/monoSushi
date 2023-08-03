@@ -13,7 +13,6 @@ export class AdminCategoryComponent {
   addMenu = false
   editMode = false
   editId!: number
-  data!: Date
   uploadPercent!: number
   isUploaded = false
   showProgress!:boolean

@@ -27,6 +27,9 @@ import { SaucesComponent } from './pages/products/sauces/sauces.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -56,8 +59,10 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatTabsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
