@@ -1,58 +1,111 @@
 {
-  "discounts": [],
+  "discounts": [
+    {
+      "name": "Рол тижня",
+      "title": "Рол тижня",
+      "description": "Забирайте своє замовлення самостійно та отримуйте такі переваги:\n\n-Запечені моно макі з лососем у подарунок.\n-Відсутність мінімальної суми замовлення.\n-Час очікування на замовлення до 30 хв.",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=409a4d12-d28b-46d5-82f1-15cc2391d87e",
+      "date": "2023-08-07T13:58:41.157Z",
+      "id": 2
+    },
+    {
+      "name": "\"3+1=5\"",
+      "title": "\"3+1=5\"",
+      "description": "Замовляйте 5 ролів, а платіть за 4.\nЗамовляйте 10 ролів, а платіть за 8 і так далі.\nБезкоштовним вважається рол з найменшою вартістю.\nЦя акція не поєднується з іншими акціями.",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2Fimgonline-com-ua-compressed-ovy2upme6l.jpg.pagespeed.ce.nLbuyi-_hm.jpg?alt=media&token=51971b15-5661-4593-bc7c-0aedb777caab",
+      "date": "2023-08-07T13:59:29.825Z",
+      "id": 3
+    }
+  ],
   "categories": [
     {
-      "name": "Суші",
-      "path": "sushi",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=8e72fb65-040b-4abc-a7c9-8bc0b5956b17",
+      "name": "Роли",
+      "path": "rolls",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=be866b1e-af10-4c1c-b88a-c869eed6f0e0",
+      "id": 1
+    },
+    {
+      "name": "Сети",
+      "path": "sets",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=db7ed0ae-d944-4339-b706-7e15ff6d7199",
       "id": 2
     },
     {
       "name": "Напої",
       "path": "drinks",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2Fcola2.jpg?alt=media&token=f4588ab9-0371-47b1-96f9-f272d1c0b408",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2Fcola2.jpg?alt=media&token=5cfe56c7-a0bb-44d2-9d7b-6a508f95d426",
       "id": 3
+    },
+    {
+      "name": "Соуси",
+      "path": "sauces",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=351f84cb-a6e9-4123-ba21-aa51cb4911bc",
+      "id": 4
     }
   ],
   "products": [
     {
-      "path": "sushi",
-      "name": "Філадельфія",
-      "ingredients": "огірок",
-      "weight": "129",
-      "price": "150",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=cb4506f9-0314-40cf-882e-c86e88b5ae3b",
-      "category": null,
+      "path": "rolls",
+      "name": "Філадельфія з лососем",
+      "ingredients": "Риc, крем сир, огірок, лосось",
+      "weight": "280",
+      "price": "277",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=c89d9bb4-fe08-4202-a168-baecf6c16075",
+      "category": {
+        "name": "Роли",
+        "path": "rolls",
+        "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=be866b1e-af10-4c1c-b88a-c869eed6f0e0",
+        "id": 1
+      },
+      "count": 1,
       "id": 1
     },
     {
-      "path": "sushi",
-      "name": "Канзас",
-      "ingredients": "Помідор",
-      "weight": "100",
-      "price": "50",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=038bda69-bfaf-4ede-bd6e-5d79284ebbc4",
-      "category": null,
+      "path": "sets",
+      "name": "Монокомбо 1",
+      "ingredients": "Філадельфія з лососем\nКаліфорнія з креветкою",
+      "weight": "530",
+      "price": "415",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2Fimgonline-com-ua-compressed-ovy2upme6l.jpg.pagespeed.ce.nLbuyi-_hm.jpg?alt=media&token=feb2a8d0-ee92-4dbb-a665-58da790d9116",
+      "category": {
+        "name": "Сети",
+        "path": "sets",
+        "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=db7ed0ae-d944-4339-b706-7e15ff6d7199",
+        "id": 2
+      },
+      "count": 1,
       "id": 2
     },
     {
-      "path": "sushi",
-      "name": "Огірочки",
-      "ingredients": "соус",
-      "weight": "15",
-      "price": "90",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=7224afe3-434f-4c87-889d-cbd92917e38d",
-      "category": null,
+      "path": "drinks",
+      "name": "Coca cola",
+      "ingredients": "Кола",
+      "weight": "0.33",
+      "price": "31",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2Fcola2.jpg?alt=media&token=198ec28a-5f71-4aec-992f-a0391ce3e76f",
+      "category": {
+        "name": "Напої",
+        "path": "drinks",
+        "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2Fcola2.jpg?alt=media&token=5cfe56c7-a0bb-44d2-9d7b-6a508f95d426",
+        "id": 3
+      },
+      "count": 1,
       "id": 3
     },
     {
-      "path": "sushi",
-      "name": "Булочка",
-      "ingredients": "сир",
-      "weight": "152",
-      "price": "122",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=a52e5d33-affe-4719-8508-4c55ecb43b80",
-      "category": null,
+      "path": "sauces",
+      "name": "Соєвий соус",
+      "ingredients": "Соєвий соус",
+      "weight": "150",
+      "price": "24",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F22334.jpg.pagespeed.ce.8Xt2zM42sb.jpg?alt=media&token=457c8d32-8286-4809-b0ef-2a5c67997ba6",
+      "category": {
+        "name": "Соуси",
+        "path": "sauces",
+        "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-db38a.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=351f84cb-a6e9-4123-ba21-aa51cb4911bc",
+        "id": 4
+      },
+      "count": 1,
       "id": 4
     }
   ]

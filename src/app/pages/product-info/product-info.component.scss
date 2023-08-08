@@ -1,42 +1,42 @@
-h1{
-    text-align: center;
-    font-size: 40px;
-}
-
 .container{
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.products{
     display: flex;
-    justify-content: space-around;
-    margin-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 50px;
+    justify-content: center;
 }
 
 .product-block{
     max-width: 25%;
+    display: flex;
+    justify-content: space-around;
     img{
-        width: 360px;
-        height: 150px;
+        width: 550px;
+        height: 230px;
         object-fit: contain;
         margin-bottom: 20px;
     }
     h3{
-        font-size: 20px;
-        text-align: center;
+        font-size: 42px;
         font-weight: bold;
+    }
+    .right-block{
+        margin-left: 150px;
+        text-align: start;
+        min-width: 550px;
     }
 }
 
 .desc-block{
-    display: flex;
-    justify-content: space-between;
-    font-size: 16px;
+    font-size: 18px;
     color: #5a5a5a;
     margin-bottom: 30px;
-    .weight{
-        font-weight: bold;
+    .ingredients{
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    span{
+        color: #b5d8f7;
     }
 }
 
@@ -45,6 +45,7 @@ h1{
     justify-content: space-between;
     font-size: 20px;
     align-items: center;
+    width: 100%;
     .count{
         border: 1px solid #dcdcdc;
         border-radius: 10px;
@@ -52,6 +53,12 @@ h1{
         padding: 8px;
         .count-item{
             margin: 0 10px;
+        }
+        input{
+            border: none;
+            width: 30px;
+            padding-left: 10px;
+            font-size: 16px;
         }
     }
 }
@@ -65,4 +72,13 @@ h1{
     cursor: pointer;
     line-height: 14px;
     font-weight: bold;
+}
+
+.breadcrumbs{
+    position: absolute;
+    left: 20px;
+    top: 120px;
+    a{
+        color: #5a5a5a;
+    }
 }

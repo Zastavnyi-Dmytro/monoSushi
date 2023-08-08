@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Discounts } from '../../interfaces/interfaces.component';
 import { DiscountsRequest } from '../../interfaces/interfaces.component';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,9 @@ export class DiscountService {
 
   delete(id:number):Observable<void>{
     return this.http.delete<void>(`${this.api.discounts}/${id}`)
+  }
+
+  resolve(route:ActivatedRouteSnapshot):Observable<Discounts>{
+    return this.http.get<Discounts>(`${this.api.discounts}/${route.paramMap.get('id')}`)
   }
 }

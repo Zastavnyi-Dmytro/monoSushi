@@ -36,7 +36,9 @@ export interface Products {
   ingredients:string,
   weight:number,
   price:number,
-  img:string
+  img:string,
+  category:Category,
+  count:number
 }
 
 export interface ProductsRequest {

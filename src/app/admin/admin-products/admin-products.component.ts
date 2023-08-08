@@ -64,6 +64,7 @@ export class AdminProductsComponent {
       price: [null, Validators.required],
       img: [null, Validators.required],
       category: [null, Validators.required],
+      count:[1]
     })
   }
 
@@ -95,7 +96,8 @@ export class AdminProductsComponent {
       ingredients: product.ingredients,
       weight: product.weight,
       price: product.price,
-      img: product.img
+      img: product.img,
+      count:product.count
     })
     this.isUploaded = true
     this.addMenu = true

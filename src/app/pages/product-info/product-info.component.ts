@@ -1,33 +1,22 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { Products } from 'src/app/shared/interfaces/interfaces.component';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/products/product.service';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-product-info',
+  templateUrl: './product-info.component.html',
+  styleUrls: ['./product-info.component.scss']
 })
-export class ProductsComponent{
-  public userProducts:Array<Products> = []
-  public activeRolls = false
-  private eventSubscription!:Subscription
+export class ProductInfoComponent {
   public currentProduct!:Products
 
   constructor(
-    private productService: ProductService,
+    private productService:ProductService,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private orderService: OrderService
-  ){
-    this.eventSubscription = this.router.events.subscribe(event=>{
-      if(event instanceof NavigationEnd){
-        this.loadProducts()
-      }
-    })
-  }
+  ){}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(response=>{
@@ -35,17 +24,13 @@ export class ProductsComponent{
     })
   }
 
-  loadProducts():void{
-    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productService.getProductsByCategory(categoryName).subscribe(data=>{
-      this.userProducts = data
-      if(data[0].path == 'rolls'){
-        this.activeRolls = true
-      }
-      else{
-        this.activeRolls = false
-      }
-    })
+  productCount(product:Products, value:boolean):void{
+    if(value){
+      ++this.currentProduct.count
+    }
+    else if(!value&&product.count>1){
+      --this.currentProduct.count
+    }
   }
 
   addToBasket(product: Products): void {
@@ -69,18 +54,5 @@ export class ProductsComponent{
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
     this.orderService.changeBasket.next(true);
-  }
-
-  productCount(product:Products, value:boolean):void{
-    if(value){
-      ++product.count
-    }
-    else if(!value&&product.count>1){
-      --product.count
-    }
-  }
-
-  ngOnDestroy(): void {
-    this.eventSubscription.unsubscribe()
   }
 }

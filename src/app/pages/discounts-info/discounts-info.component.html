@@ -1,1 +1,11 @@
-<p>discounts-info works!</p>
+<div class="breadcrumbs">
+    <a [routerLink]="[ '/home']" routerLinkActive="active">Головна</a>
+    <span> ● </span>
+    <a [routerLink]="[ '/discounts']" routerLinkActive="active">Акції</a>
+    <span> ● </span>
+    <span>{{currentDiscount.name}}</span>
+  </div>
+<div class="container">
+    <h2 class="title">{{currentDiscount.title}}</h2>
+    <span>{{currentDiscount.description}}</span>
+</div>

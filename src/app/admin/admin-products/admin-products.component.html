@@ -10,7 +10,7 @@
         <button (click)="openAddMenu()" class="btn">ДОДАТИ ПРОДУКТ </button>
         <div *ngIf="addMenu" class="add-module" [formGroup]="productForm">
             <select formControlName="category" class="form-select">
-                <option ngValue="category" *ngFor="let category of adminCategories">{{category.name}}</option>
+                <option [ngValue]="category" *ngFor="let category of adminCategories">{{category.name}}</option>
             </select>
             <div class="title-inputs">
                 <input type="text" formControlName = "name" placeholder="*Назва">

@@ -1,0 +1,35 @@
+.breadcrumbs{
+    position: absolute;
+    left: 20px;
+    top: 120px;
+    a{
+        color: #5a5a5a;
+    }
+}
+
+.container{
+    margin-top: 100px;
+    text-align: center;
+    h2{
+        width: 50%;
+        height: 200px;
+        background-color: #b5d8f7;
+        margin: 0 auto;
+        font-size: 42px;
+        border-radius: 8px;
+        background-image: url(https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg), url(https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg);
+        background-repeat: repeat;
+        background-position: 0 0, 190px -52px;
+        padding-top: 80px;
+    }
+    span{
+        display: flex;
+        width: 50%;
+        font-size: 18px;
+        height: 100px;
+        justify-content: center;
+        margin: 0 auto;
+        margin-top: 50px;
+        color: #5a5a5a;
+    }
+}

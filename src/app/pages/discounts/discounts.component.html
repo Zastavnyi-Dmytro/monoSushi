@@ -1,8 +1,8 @@
 <h1>Акції</h1>
 <div class="container">
     <div class="blogs" *ngFor="let item of userDiscounts">
-        <img [src]="item.img" alt="">
-        <h3 class="name">{{item.name}}</h3>
-        <h3 class="description">{{item.description}}</h3>
+        <img [routerLink]="[ '/discounts/'+ item.name, item.id]" routerLinkActive="active" [src]="item.img" alt="">
+        <h3 class="name" [routerLink]="[ '/discounts/'+ item.name, item.id]" routerLinkActive="active">{{item.name}}</h3>
+        <button>Дізнатися більше</button>
     </div>
 </div>

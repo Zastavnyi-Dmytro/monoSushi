@@ -12,7 +12,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { DiscountsComponent } from './pages/discounts/discounts.component';
 import { DiscountsInfoComponent } from './pages/discounts-info/discounts-info.component';
 import { ProductsComponent } from './pages/products/products.component';
-import { ProductsInfoComponent } from './pages/products-info/products-info.component';
 import { DeliveryandpaymentComponent } from './pages/deliveryandpayment/deliveryandpayment.component';
 import { AboutusComponent } from './pages/aboutus/aboutus.component';
 import { StylesComponent } from './shared/styles/styles.component';
@@ -20,15 +19,12 @@ import { InterfacesComponent } from './shared/interfaces/interfaces.component';
 import { AdminDiscountsComponent } from './admin/admin-discounts/admin-discounts.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { RollsComponent } from './pages/products/rolls/rolls.component';
-import { SetsComponent } from './pages/products/sets/sets.component';
-import { DrinksComponent } from './pages/products/drinks/drinks.component';
-import { SaucesComponent } from './pages/products/sauces/sauces.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
 
 
 @NgModule({
@@ -40,7 +36,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     DiscountsComponent,
     DiscountsInfoComponent,
     ProductsComponent,
-    ProductsInfoComponent,
     DeliveryandpaymentComponent,
     AboutusComponent,
     StylesComponent,
@@ -48,10 +43,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AdminDiscountsComponent,
     AdminCategoryComponent,
     AdminProductsComponent,
-    RollsComponent,
-    SetsComponent,
-    DrinksComponent,
-    SaucesComponent
+    ProductInfoComponent
   ],
   imports: [
     BrowserModule,

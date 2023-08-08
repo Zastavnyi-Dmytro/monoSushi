@@ -3,25 +3,30 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home.component';
 import { DiscountsComponent } from './pages/discounts/discounts.component';
-import { RollsComponent } from './pages/products/rolls/rolls.component';
-import { SetsComponent } from './pages/products/sets/sets.component';
-import { DrinksComponent } from './pages/products/drinks/drinks.component';
-import { SaucesComponent } from './pages/products/sauces/sauces.component';
+import { DiscountsInfoComponent } from './pages/discounts-info/discounts-info.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { DeliveryandpaymentComponent } from './pages/deliveryandpayment/deliveryandpayment.component';
 import { AboutusComponent } from './pages/aboutus/aboutus.component';
 import { AdminDiscountsComponent } from './admin/admin-discounts/admin-discounts.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { ProductService } from './shared/services/products/product.service';
+import { DiscountService } from './shared/services/discounts/discount.service';
+
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path:'home', component: HomeComponent},
   {path:'discounts', component: DiscountsComponent},
-  {path:'products/rolls', component: RollsComponent},
-  {path:'products/sets', component: SetsComponent},
-  {path:'products/drinks', component: DrinksComponent},
-  {path:'products/sauces', component: SaucesComponent},
+  {path:'discounts/:name/:id', component: DiscountsInfoComponent, resolve:{
+    discountInfo: DiscountService
+  }},
+  {path:'products/:category', component: ProductsComponent},
+  {path:'products/:category/:id', component: ProductInfoComponent, resolve:{
+    productInfo: ProductService
+  }},
   {path:'delivery-and-payment', component: DeliveryandpaymentComponent},
   {path:'about-us', component: AboutusComponent},
   {path:'admin/discounts', component: AdminDiscountsComponent},
