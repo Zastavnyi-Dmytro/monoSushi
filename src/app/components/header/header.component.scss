@@ -72,6 +72,7 @@
     border-radius: 10px;
     line-height: 1em;
     text-transform: none;
+    cursor: pointer;
     img{
         margin-right: 10px;
     }
@@ -332,5 +333,9 @@
 
 .delete{
     cursor: pointer;
+}
+
+.user-block{
+    text-align: center;
 }
 

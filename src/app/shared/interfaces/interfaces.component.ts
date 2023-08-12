@@ -50,6 +50,11 @@ export interface ProductsRequest {
   img:string
 }
 
+export interface Login {
+  email:string,
+  password:string
+}
+
 @Component({
   selector: 'app-interfaces',
   templateUrl: './interfaces.component.html',

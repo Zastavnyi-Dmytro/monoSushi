@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Products } from 'src/app/shared/interfaces/interfaces.component';
+import { AccountService } from 'src/app/shared/services/account/account.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +14,9 @@ export class HeaderComponent {
   burgerSwitch = false
   public total = 0
   basketSwitch = false
+  isLogin = false
+  loginUrl = ''
+  loginPage = ''
 
   currentProduct!:Products
   public basket: Array<Products> = [];
@@ -19,12 +24,16 @@ export class HeaderComponent {
   constructor(
     private orderServive: OrderService,
     private activatedRoute: ActivatedRoute,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private accountService: AccountService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
+    this.checkLogin();
+    this.checkUpdateUserLogin()
   }
 
   openBurger(): void {
@@ -76,5 +85,36 @@ export class HeaderComponent {
     }
     localStorage.setItem('basket', JSON.stringify(basket));
     this.loadBasket()
+  }
+
+  checkLogin(){
+    let user = JSON.parse(localStorage.getItem('currentUser') as string)
+    if(user && user.role === "ADMIN"){
+      this.isLogin = true
+      this.loginUrl = 'admin/discounts'
+      this.loginPage = 'Admin'
+    }
+    else if(user && user.role === "USER"){
+      this.isLogin = true
+      this.loginUrl = 'user-profile'
+      this.loginPage = 'User'
+    }
+    else{
+      this.isLogin = false
+      this.loginUrl = 'home'
+      this.loginPage = ''
+    }
+  }
+
+  checkUpdateUserLogin(){
+    this.accountService.isUserLogin$.subscribe(()=>{
+      this.checkLogin()
+    })
+  }
+
+  logout(){
+    this.router.navigate(['home'])
+    localStorage.removeItem('currentUser')
+    this.accountService.isUserLogin$.next(true)
   }
 }

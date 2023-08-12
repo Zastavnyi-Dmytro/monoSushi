@@ -1,0 +1,7 @@
+<div class="authForm" [formGroup]="authForm">
+    <div class="inputs">
+        <input type="text" formControlName = "email" placeholder="*Email">
+        <input type="password" formControlName = "password" placeholder="*Password">
+    </div>
+    <button class="btn" (click)="login()">Login</button>
+</div>

@@ -11,8 +11,14 @@ import { AboutusComponent } from './pages/aboutus/aboutus.component';
 import { AdminDiscountsComponent } from './admin/admin-discounts/admin-discounts.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { ProductService } from './shared/services/products/product.service';
 import { DiscountService } from './shared/services/discounts/discount.service';
+import { authGuard } from './shared/guards/auth/auth.guard';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { UserProfileInfoComponent } from './pages/user-profile/user-profile-info/user-profile-info.component';
+import { UserProfileHistoryComponent } from './pages/user-profile/user-profile-history/user-profile-history.component';
 
 
 
@@ -29,10 +35,14 @@ const routes: Routes = [
   }},
   {path:'delivery-and-payment', component: DeliveryandpaymentComponent},
   {path:'about-us', component: AboutusComponent},
-  {path:'admin/discounts', component: AdminDiscountsComponent},
-  {path:'admin/products', component: AdminProductsComponent},
-  {path:'admin/category', component: AdminCategoryComponent},
-
+  {path:'auth', component: AuthorizationComponent},
+  {path:'user-profile', component: UserProfileComponent, canActivate:[authGuard]},
+  {path:'user-profile/info', component: UserProfileInfoComponent, canActivate:[authGuard]},
+  {path:'user-profile/history', component: UserProfileHistoryComponent, canActivate:[authGuard]},
+  {path:'admin/discounts', component: AdminDiscountsComponent, canActivate:[authGuard]},
+  {path:'admin/products', component: AdminProductsComponent, canActivate:[authGuard]},
+  {path:'admin/category', component: AdminCategoryComponent, canActivate:[authGuard]},
+  {path:'admin/order', component: AdminOrderComponent, canActivate:[authGuard]},
 ];
 
 @NgModule({

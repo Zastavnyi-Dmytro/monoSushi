@@ -52,7 +52,12 @@
         <a href="" class="header-phone">(097) 878 08 37</a>
         <div class="header-work-time">Працюємо з <b>11:00</b> до <b>22:30</b></div>
     </div>
-    <div class="header-user" [routerLink]="[ '/admin/discounts']" routerLinkActive="active">
+    <div *ngIf="isLogin" class="header-user user-block" [routerLink]="[ '/'+loginUrl]" routerLinkActive="active">
+        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
+        <p>{{loginPage}}</p>
+    </div>
+    <button class="btn" *ngIf="isLogin" (click)="logout()">Вийти</button>
+    <div *ngIf="!isLogin" class="header-user" [routerLink]="[ '/auth']" routerLinkActive="active">
         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
     </div>
     <div class="header-basket" (click)="openBasket()">

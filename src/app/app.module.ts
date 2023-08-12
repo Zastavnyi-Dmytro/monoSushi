@@ -25,6 +25,11 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
+import { UserProfileInfoComponent } from './pages/user-profile/user-profile-info/user-profile-info.component';
+import { UserProfileHistoryComponent } from './pages/user-profile/user-profile-history/user-profile-history.component';
 
 
 @NgModule({
@@ -43,7 +48,12 @@ import { ProductInfoComponent } from './pages/product-info/product-info.componen
     AdminDiscountsComponent,
     AdminCategoryComponent,
     AdminProductsComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    AuthorizationComponent,
+    UserProfileComponent,
+    AdminOrderComponent,
+    UserProfileInfoComponent,
+    UserProfileHistoryComponent
   ],
   imports: [
     BrowserModule,
