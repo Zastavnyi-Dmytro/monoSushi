@@ -1,7 +1,46 @@
-<div class="authForm" [formGroup]="authForm">
-    <div class="inputs">
-        <input type="text" formControlName = "email" placeholder="*Email">
-        <input type="password" formControlName = "password" placeholder="*Password">
+<form [formGroup]="authForm">
+    <div *ngIf="!signUpCheck" class="form-input">
+        <div class="form-group">
+            <mat-form-field>
+                <input matInput type="email" formControlName = "email" placeholder="*Ваш Email">
+              </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <input matInput type="password" formControlName = "password" placeholder="*Password">
+              </mat-form-field>
+        </div>
     </div>
-    <button class="btn" (click)="login()">Login</button>
-</div>
+    <div *ngIf="signUpCheck">
+        <div class="form-group d-flex">
+            <mat-form-field class="mr">
+                <input matInput type="text" formControlName = "firstName" placeholder="*Ваше ім'я">
+              </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" formControlName = "lastName" placeholder="*Ваше прізвище">
+              </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="w100">
+                <input matInput type="text" formControlName = "phoneNumber" placeholder="*Ваш телефон">
+              </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="w100">
+                <input matInput type="email" formControlName = "email" placeholder="*Ваш Email">
+              </mat-form-field>
+        </div>
+        <div class="form-group d-flex">
+            <mat-form-field class="mr">
+                <input matInput type="password" formControlName = "password" placeholder="*Пароль">
+              </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" formControlName = "checkPassword" placeholder="*Повторіть пароль">
+              </mat-form-field>
+        </div>
+    </div>
+    <button class="btn" mat-stroked-button *ngIf="!signUpCheck" mat-dialog-close (click)="login()">Увійти в кабінет</button>
+    <button class="btn" mat-stroked-button *ngIf="signUpCheck" mat-dialog-close (click)="signUp()">Зареєструватись</button>
+    <a (click)="openSignUp()" *ngIf="!signUpCheck">Зареєструватись</a>
+    <a (click)="openSignUp()" *ngIf="signUpCheck">Вже зареєстровані? <b>Увійти</b></a>
+</form>

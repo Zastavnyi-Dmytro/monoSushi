@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StylesComponent } from './styles.component';
+import { AdminAuthComponent } from './admin-auth.component';
 
-describe('StylesComponent', () => {
-  let component: StylesComponent;
-  let fixture: ComponentFixture<StylesComponent>;
+describe('AdminAuthComponent', () => {
+  let component: AdminAuthComponent;
+  let fixture: ComponentFixture<AdminAuthComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [StylesComponent]
+      declarations: [AdminAuthComponent]
     });
-    fixture = TestBed.createComponent(StylesComponent);
+    fixture = TestBed.createComponent(AdminAuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

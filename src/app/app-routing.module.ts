@@ -19,6 +19,7 @@ import { AuthorizationComponent } from './pages/authorization/authorization.comp
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { UserProfileInfoComponent } from './pages/user-profile/user-profile-info/user-profile-info.component';
 import { UserProfileHistoryComponent } from './pages/user-profile/user-profile-history/user-profile-history.component';
+import { AdminAuthComponent } from './admin/admin-auth/admin-auth.component';
 
 
 
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path:'admin/products', component: AdminProductsComponent, canActivate:[authGuard]},
   {path:'admin/category', component: AdminCategoryComponent, canActivate:[authGuard]},
   {path:'admin/order', component: AdminOrderComponent, canActivate:[authGuard]},
+  {path:'admin/admin-auth', component: AdminAuthComponent}
 ];
 
 @NgModule({

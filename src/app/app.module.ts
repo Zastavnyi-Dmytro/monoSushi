@@ -14,12 +14,13 @@ import { DiscountsInfoComponent } from './pages/discounts-info/discounts-info.co
 import { ProductsComponent } from './pages/products/products.component';
 import { DeliveryandpaymentComponent } from './pages/deliveryandpayment/deliveryandpayment.component';
 import { AboutusComponent } from './pages/aboutus/aboutus.component';
-import { StylesComponent } from './shared/styles/styles.component';
 import { InterfacesComponent } from './shared/interfaces/interfaces.component';
 import { AdminDiscountsComponent } from './admin/admin-discounts/admin-discounts.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -30,6 +31,14 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { UserProfileInfoComponent } from './pages/user-profile/user-profile-info/user-profile-info.component';
 import { UserProfileHistoryComponent } from './pages/user-profile/user-profile-history/user-profile-history.component';
+
+import { MatInputModule } from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import { AdminAuthComponent } from './admin/admin-auth/admin-auth.component';
 
 
 @NgModule({
@@ -43,7 +52,6 @@ import { UserProfileHistoryComponent } from './pages/user-profile/user-profile-h
     ProductsComponent,
     DeliveryandpaymentComponent,
     AboutusComponent,
-    StylesComponent,
     InterfacesComponent,
     AdminDiscountsComponent,
     AdminCategoryComponent,
@@ -53,7 +61,8 @@ import { UserProfileHistoryComponent } from './pages/user-profile/user-profile-h
     UserProfileComponent,
     AdminOrderComponent,
     UserProfileInfoComponent,
-    UserProfileHistoryComponent
+    UserProfileHistoryComponent,
+    AdminAuthComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +73,15 @@ import { UserProfileHistoryComponent } from './pages/user-profile/user-profile-h
     MatTabsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
-    NoopAnimationsModule
+    provideFirestore(()=> getFirestore()),
+    provideAuth(()=> getAuth()),
+    NoopAnimationsModule,
+    MatInputModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

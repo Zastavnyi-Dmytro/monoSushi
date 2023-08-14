@@ -8,11 +8,11 @@ import { ROLE } from 'src/app/shared/constants/role.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 
 @Component({
-  selector: 'app-authorization',
-  templateUrl: './authorization.component.html',
-  styleUrls: ['./authorization.component.scss']
+  selector: 'app-admin-auth',
+  templateUrl: './admin-auth.component.html',
+  styleUrls: ['./admin-auth.component.scss']
 })
-export class AuthorizationComponent {
+export class AdminAuthComponent {
   public authForm!: FormGroup
   public loginSubscription!: Subscription
   signUpCheck = false
@@ -35,12 +35,8 @@ export class AuthorizationComponent {
 
   initAuthForm(): void {
     this.authForm = this.fb.group({
-      firstName: [null, [Validators.required]],
-      lastName: [null, [Validators.required]],
-      phoneNumber: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required]],
-      checkPassword: [null, [Validators.required]],
+      password: [null, [Validators.required]]
     })
   }
 
@@ -69,34 +65,5 @@ export class AuthorizationComponent {
     }, (err => {
       console.log('error', err)
     }))
-  }
-
-  openSignUp(){
-    this.signUpCheck = !this.signUpCheck
-  }
-
-  signUp(){
-    const { email, password } = this.authForm.value
-    this.emailSignUp(email,password).then(()=>{
-      console.log('signUp done')
-      this.authForm.reset()
-      this.signUpCheck = false
-      this.loginBase(email,password)
-    },(err)=>{
-      console.log('signUp error', err)
-    })
-  }
-
-  async emailSignUp(email:string, password:string):Promise<any>{
-    const credential = await createUserWithEmailAndPassword(this.auth, email, password)
-    const user = {
-      email: credential.user.email,
-      firstName: this.authForm.value.firstName,
-      lastName: this.authForm.value.lastName,
-      phoneNumber: this.authForm.value.phoneNumber,
-      orders: [],
-      role: 'USER'
-    }
-    setDoc(doc(this.afs, 'users', credential.user.uid), user)
   }
 }

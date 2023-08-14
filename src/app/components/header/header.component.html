@@ -57,7 +57,7 @@
         <p>{{loginPage}}</p>
     </div>
     <button class="btn" *ngIf="isLogin" (click)="logout()">Вийти</button>
-    <div *ngIf="!isLogin" class="header-user" [routerLink]="[ '/auth']" routerLinkActive="active">
+    <div *ngIf="!isLogin" class="header-user" (click)="openLoginDialog()">
         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
     </div>
     <div class="header-basket" (click)="openBasket()">

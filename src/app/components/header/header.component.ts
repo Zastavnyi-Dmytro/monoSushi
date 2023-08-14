@@ -4,6 +4,8 @@ import { Products } from 'src/app/shared/interfaces/interfaces.component';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthorizationComponent } from 'src/app/pages/authorization/authorization.component';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +28,8 @@ export class HeaderComponent {
     private activatedRoute: ActivatedRoute,
     private orderService: OrderService,
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ){}
 
   ngOnInit(): void {
@@ -116,5 +119,12 @@ export class HeaderComponent {
     this.router.navigate(['home'])
     localStorage.removeItem('currentUser')
     this.accountService.isUserLogin$.next(true)
+  }
+
+  openLoginDialog(){
+    this.dialog.open(AuthorizationComponent, {
+      panelClass: 'auth-dialog',
+      autoFocus: false
+    })
   }
 }
