@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Auth, UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ROLE } from 'src/app/shared/constants/role.constant';
@@ -16,6 +16,7 @@ export class AuthorizationComponent {
   public authForm!: FormGroup
   public loginSubscription!: Subscription
   signUpCheck = false
+  checkPassword = false
 
   constructor(
     private fb: FormBuilder,
@@ -40,7 +41,7 @@ export class AuthorizationComponent {
       phoneNumber: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
-      checkPassword: [null, [Validators.required]],
+      confirmPassword: [null, [Validators.required]],
     })
   }
 
@@ -98,5 +99,26 @@ export class AuthorizationComponent {
       role: 'USER'
     }
     setDoc(doc(this.afs, 'users', credential.user.uid), user)
+  }
+
+  checkConfirmPassword(){
+    this.checkPassword = this.password.value === this.confirmPassword.value;
+    if(this.password.value!==this.confirmPassword.value){
+      this.authForm.controls['confirmPassword'].setErrors({
+        matchError: 'Пароль не співпадає'
+      })
+    }
+  }
+
+  get password(): AbstractControl {
+    return this.authForm.controls['password']
+  }
+
+  get confirmPassword(): AbstractControl {
+    return this.authForm.controls['confirmPassword']
+  }
+
+  checkVisibilityControl(control:string, name: string):boolean| null{
+    return this.authForm.controls[control].errors?.[name]
   }
 }

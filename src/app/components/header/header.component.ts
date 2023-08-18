@@ -6,6 +6,7 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthorizationComponent } from 'src/app/pages/authorization/authorization.component';
+import { WeCallModalComponent } from 'src/app/pages/we-call-modal/we-call-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -99,7 +100,7 @@ export class HeaderComponent {
     }
     else if(user && user.role === "USER"){
       this.isLogin = true
-      this.loginUrl = 'user-profile'
+      this.loginUrl = 'user-profile/info'
       this.loginPage = 'User'
     }
     else{
@@ -123,6 +124,13 @@ export class HeaderComponent {
 
   openLoginDialog(){
     this.dialog.open(AuthorizationComponent, {
+      panelClass: 'auth-dialog',
+      autoFocus: false
+    })
+  }
+
+  openCallDialog(){
+    this.dialog.open(WeCallModalComponent, {
       panelClass: 'auth-dialog',
       autoFocus: false
     })

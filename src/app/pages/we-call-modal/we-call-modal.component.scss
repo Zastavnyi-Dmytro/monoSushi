@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    h1{
+        font-size: 34px;
+        font-weight: bold;
+    }
+    span{
+        font-size: 16px;
+        color: #5a5a5a;
+    }
+    input{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 5px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 1px solid #5a5a5a;
+    }
+    button{
+        width: 50%;
+        margin: 0 auto;
+        padding: 10px 15px 11px;
+        background: #b5d8f7;
+        border: 2px solid #b5d8f7;
+        border-radius: 10px;
+        line-height: 1em;
+        text-transform: none;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: white;
+    }
+}

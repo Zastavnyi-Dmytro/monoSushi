@@ -32,15 +32,16 @@
         </div>
         <div class="form-group d-flex">
             <mat-form-field class="mr">
-                <input matInput type="password" formControlName = "password" placeholder="*Пароль">
+                <input matInput (input)="checkConfirmPassword()" type="password" formControlName = "password" placeholder="*Пароль">
               </mat-form-field>
             <mat-form-field>
-                <input matInput type="password" formControlName = "checkPassword" placeholder="*Повторіть пароль">
+                <input matInput (input)="checkConfirmPassword()" type="password" formControlName = "confirmPassword" placeholder="*Повторіть пароль">
               </mat-form-field>
         </div>
+        <mat-error *ngIf="checkVisibilityControl('confirmPassword', 'matchError')">Пароль не співпадає</mat-error>
     </div>
     <button class="btn" mat-stroked-button *ngIf="!signUpCheck" mat-dialog-close (click)="login()">Увійти в кабінет</button>
-    <button class="btn" mat-stroked-button *ngIf="signUpCheck" mat-dialog-close (click)="signUp()">Зареєструватись</button>
+    <button class="btn" mat-stroked-button *ngIf="signUpCheck" mat-dialog-close (click)="signUp()" [disabled]="authForm.invalid">Зареєструватись</button>
     <a (click)="openSignUp()" *ngIf="!signUpCheck">Зареєструватись</a>
     <a (click)="openSignUp()" *ngIf="signUpCheck">Вже зареєстровані? <b>Увійти</b></a>
 </form>

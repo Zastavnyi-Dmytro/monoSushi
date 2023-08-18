@@ -15,30 +15,15 @@ import { ProductsComponent } from './pages/products/products.component';
 import { DeliveryandpaymentComponent } from './pages/deliveryandpayment/deliveryandpayment.component';
 import { AboutusComponent } from './pages/aboutus/aboutus.component';
 import { InterfacesComponent } from './shared/interfaces/interfaces.component';
-import { AdminDiscountsComponent } from './admin/admin-discounts/admin-discounts.component';
-import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { MatTabsModule } from '@angular/material/tabs';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
-import { AuthorizationComponent } from './pages/authorization/authorization.component';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
-import { UserProfileInfoComponent } from './pages/user-profile/user-profile-info/user-profile-info.component';
-import { UserProfileHistoryComponent } from './pages/user-profile/user-profile-history/user-profile-history.component';
-
-import { MatInputModule } from '@angular/material/input';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
-import { AdminAuthComponent } from './admin/admin-auth/admin-auth.component';
+import { WeCallModalComponent } from './pages/we-call-modal/we-call-modal.component';
+import { SharedModule } from './shared/shared-module';
 
 
 @NgModule({
@@ -53,16 +38,8 @@ import { AdminAuthComponent } from './admin/admin-auth/admin-auth.component';
     DeliveryandpaymentComponent,
     AboutusComponent,
     InterfacesComponent,
-    AdminDiscountsComponent,
-    AdminCategoryComponent,
-    AdminProductsComponent,
     ProductInfoComponent,
-    AuthorizationComponent,
-    UserProfileComponent,
-    AdminOrderComponent,
-    UserProfileInfoComponent,
-    UserProfileHistoryComponent,
-    AdminAuthComponent
+    WeCallModalComponent
   ],
   imports: [
     BrowserModule,
@@ -70,18 +47,12 @@ import { AdminAuthComponent } from './admin/admin-auth/admin-auth.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatTabsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
     provideFirestore(()=> getFirestore()),
     provideAuth(()=> getAuth()),
     NoopAnimationsModule,
-    MatInputModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatDividerModule,
-    MatButtonModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
