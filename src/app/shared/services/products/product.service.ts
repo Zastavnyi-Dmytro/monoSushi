@@ -10,13 +10,13 @@ import { ActivatedRouteSnapshot } from '@angular/router';
   providedIn: 'root'
 })
 export class ProductService{
-  private url = environment.BACKEND_URL
-  private api = { products: `${this.url}/products` }
+  public url = environment.BACKEND_URL
+  public api = { products: `${this.url}/products` }
 
-  private products:Array<Products> = []
+  public products:Array<Products> = []
 
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) { }
 
   getProducts():Observable<Products[]>{

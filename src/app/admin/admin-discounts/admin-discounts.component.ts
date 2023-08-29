@@ -10,22 +10,22 @@ import { Storage, deleteObject, getDownloadURL, percentage, ref, uploadBytesResu
   styleUrls: ['./admin-discounts.component.scss']
 })
 export class AdminDiscountsComponent {
-  addMenu = false
-  editMode = false
-  editId!: number
-  uploadPercent!: number
-  isUploaded = false
-  showProgress!:boolean
-  deletedImg = false
+  public addMenu!:boolean
+  public editMode!:boolean
+  public editId!: number
+  public uploadPercent!: number
+  public isUploaded!:boolean
+  public showProgress!:boolean
+  public deletedImg!:boolean
 
   public discountForm!: FormGroup
 
   public adminDiscounts: Array<Discounts> = []
 
   constructor(
-    private discountsBase: DiscountService,
-    private fb: FormBuilder,
-    private storage: Storage
+    public discountsBase: DiscountService,
+    public fb: FormBuilder,
+    public storage: Storage
   ) { }
   ngOnInit(): void {
     this.getDiscounts()

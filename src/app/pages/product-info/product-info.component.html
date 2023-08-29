@@ -1,11 +1,11 @@
-<div class="breadcrumbs">
+<div class="breadcrumbs" *ngIf="currentProduct">
   <a [routerLink]="[ '/home']" routerLinkActive="active">Головна</a>
   <span> ● </span>
   <a [routerLink]="[ '/products/rolls']" routerLinkActive="active">Роли</a>
   <span> ● </span>
   <span>{{currentProduct.name}}</span>
 </div>
-<div class="container">
+<div class="container" *ngIf="currentProduct">
     <div class="product-block">
         <img [src]="currentProduct.img" alt="">
         <div class="right-block">

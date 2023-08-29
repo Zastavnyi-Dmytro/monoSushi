@@ -10,8 +10,8 @@ import { ActivatedRouteSnapshot } from '@angular/router';
   providedIn: 'root'
 })
 export class DiscountService {
-  private url = environment.BACKEND_URL
-  private api = { discounts: `${this.url}/discounts` }
+  public url = environment.BACKEND_URL
+  public api = { discounts: `${this.url}/discounts` }
 
   private discounts:Array<Discounts> = []
 

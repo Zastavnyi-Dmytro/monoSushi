@@ -73,7 +73,7 @@ export class HeaderComponent {
     if(value){
       ++product.count
     }
-    else if(!value&&product.count>1){
+    else if (!value && product.count > 0){
       --product.count
     }
     this.total = this.basket

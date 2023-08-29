@@ -11,6 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 const MATERIAL = [
     MatInputModule,
@@ -29,12 +30,14 @@ const MATERIAL = [
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        RouterModule,
     ],
     exports: [
         ...MATERIAL,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        RouterModule
     ]
 })
 

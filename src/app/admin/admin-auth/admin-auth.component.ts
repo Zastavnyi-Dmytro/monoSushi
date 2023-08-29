@@ -29,10 +29,6 @@ export class AdminAuthComponent {
     this.initAuthForm()
   }
 
-  // ngOnDestroy(): void {
-  //   this.loginSubscription.unsubscribe()
-  // }
-
   initAuthForm(): void {
     this.authForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
