@@ -1,36 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { Category } from '../../interfaces/interfaces.component';
 import { CategoryRequest } from '../../interfaces/interfaces.component';
+import { CollectionReference, DocumentData, Firestore, addDoc, collection, collectionData, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  private url = environment.BACKEND_URL
-  private api = { categories: `${this.url}/categories` }
+  private categoryCollection: CollectionReference<DocumentData>
 
-  private categories:Array<Category> = []
 
   constructor(
-    private http: HttpClient
-  ) { }
-
-  getCategory():Observable<Category[]>{
-    return this.http.get<Category[]>(this.api.categories)
+    private afs: Firestore
+  ) {  
+    this.categoryCollection = collection(this.afs, "categories")
   }
 
-  create(category:CategoryRequest):Observable<void> {
-    return this.http.post<void>(this.api.categories, category)
+  getCategory(){
+    return collectionData(this.categoryCollection, {idField:'id'})
   }
 
-  edit(category:CategoryRequest, id:number):Observable<Category>{
-    return this.http.patch<Category>(`${this.api.categories}/${id}`, category)
+  create(category:CategoryRequest){
+    return addDoc(this.categoryCollection, category)
   }
 
-  delete(id:number):Observable<void>{
-    return this.http.delete<void>(`${this.api.categories}/${id}`)
+  edit(category:CategoryRequest, id:string){
+    const categoryDocumentReference = doc(this.afs, `categories/${id}`)
+    return updateDoc(categoryDocumentReference, {...category})
+  }
+
+  delete(id:string){
+    const categoryDocumentReference = doc(this.afs, `categories/${id}`)
+    return deleteDoc(categoryDocumentReference)
   }
 }

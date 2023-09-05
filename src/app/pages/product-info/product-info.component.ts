@@ -10,34 +10,40 @@ import { ProductService } from 'src/app/shared/services/products/product.service
   styleUrls: ['./product-info.component.scss']
 })
 export class ProductInfoComponent {
-  public currentProduct!:Products
+  public currentProduct!: Products
+  public productId: string=''
 
   constructor(
-    private productService:ProductService,
-    private activatedRoute: ActivatedRoute,
-    private orderService: OrderService
-  ){}
+    private productService: ProductService,
+    private orderService: OrderService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(response=>{
-      this.currentProduct = response['productInfo']
+    this.productId = this.route.snapshot.paramMap.get('id')!;
+    this.getProduct()
+  }
+
+  getProduct(): void {
+    this.productService.getOneProduct(this.productId).subscribe(data => {
+      this.currentProduct = data as Products
     })
   }
 
-  productCount(product:Products, value:boolean):void{
-    if(value){
+  productCount(product: Products, value: boolean): void {
+    if (value) {
       ++this.currentProduct.count
     }
-    else if(!value&&product.count>1){
+    else if (!value && product.count > 1) {
       --this.currentProduct.count
     }
   }
 
   addToBasket(product: Products): void {
     let basket: Array<Products> = [];
-    if(localStorage.length > 0 && localStorage.getItem('basket')){
+    if (localStorage.length > 0 && localStorage.getItem('basket')) {
       basket = JSON.parse(localStorage.getItem('basket') as string);
-      if(basket.some(prod => prod.id === product.id)){
+      if (basket.some(prod => prod.id === product.id)) {
         const index = basket.findIndex(prod => prod.id === product.id);
         basket[index].count += product.count;
       } else {

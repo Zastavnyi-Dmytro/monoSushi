@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Products } from 'src/app/shared/interfaces/interfaces.component';
 
 @Component({
   selector: 'app-admin-order',

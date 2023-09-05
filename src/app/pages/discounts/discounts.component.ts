@@ -20,7 +20,8 @@ export class DiscountsComponent {
 
   getDiscounts():void{
     this.discountsBase.getDiscounts().subscribe(data=> {
-      this.userDiscounts = data
+      this.userDiscounts = data as Discounts[]
     })
   }
+
 }

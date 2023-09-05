@@ -1,58 +1,58 @@
 import { Component } from '@angular/core';
 
 export interface Discounts {
-  date:Date,
-  id:number,
-  name:string,
-  title:string,
-  description:string,
-  img:string
+  date: any,
+  id: string,
+  name: string,
+  title: string,
+  description: string,
+  img: string
 }
 
 export interface DiscountsRequest {
-  name:string,
-  title:string,
-  description:string,
-  img:string
+  name: string,
+  title: string,
+  description: string,
+  img: string
 }
 
 export interface Category {
-  id:number,
-  name:string,
-  path:string,
-  img:string
+  id: number | string,
+  name: string,
+  path: string,
+  img: string,
 }
 
-export interface CategoryRequest{
-  name:string,
-  path:string,
-  img:string
+export interface CategoryRequest {
+  name: string,
+  path: string,
+  img: string
 }
 
 export interface Products {
-  id:number,
-  path:string,
-  name:string,
-  ingredients:string,
-  weight:number,
-  price:number,
-  img:string,
-  category:Category,
-  count:number
+  id: any,
+  path: string,
+  name: string,
+  ingredients: string,
+  weight: number,
+  price: number,
+  img: string,
+  category: Category,
+  count: number
 }
 
 export interface ProductsRequest {
-  path:string,
-  name:string,
-  ingredients:string,
-  weight:number,
-  price:number,
-  img:string
+  path: string,
+  name: string,
+  ingredients: string,
+  weight: number,
+  price: number,
+  img: string
 }
 
 export interface Login {
-  email:string,
-  password:string
+  email: string,
+  password: string
 }
 
 @Component({

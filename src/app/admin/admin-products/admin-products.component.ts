@@ -13,7 +13,7 @@ import { CategoryService } from 'src/app/shared/services/category/category.servi
 export class AdminProductsComponent {
   addMenu = false
   editMode = false
-  editId!: number
+  editId!: number | string
   uploadPercent!: number
   isUploaded = false
   showProgress!: boolean
@@ -38,13 +38,13 @@ export class AdminProductsComponent {
 
   getProducts(): void {
     this.productsBase.getProducts().subscribe(data => {
-      this.adminProducts = data
+      this.adminProducts = data as Products[]
     })
   }
 
   loadCategories(): void {
     this.categoryService.getCategory().subscribe(data => {
-      this.adminCategories = data;
+      this.adminCategories = data as Category[];
       this.productForm.patchValue({
         category: this.adminCategories[0].id
       })
@@ -70,7 +70,7 @@ export class AdminProductsComponent {
 
   addProduct() {
     if (this.editMode) {
-      this.productsBase.edit(this.productForm.value, this.editId).subscribe(() => {
+      this.productsBase.edit(this.productForm.value, this.editId as number).then(() => {
         this.getProducts()
         this.productForm.reset()
       })
@@ -78,7 +78,7 @@ export class AdminProductsComponent {
       this.addMenu = false
     }
     else {
-      this.productsBase.create(this.productForm.value).subscribe(() => {
+      this.productsBase.create(this.productForm.value).then(() => {
         this.getProducts()
         this.productForm.reset()
         this.addMenu = false
@@ -106,7 +106,7 @@ export class AdminProductsComponent {
   }
 
   deleteProduct(product: Products): void {
-    this.productsBase.delete(product.id).subscribe(() => {
+    this.productsBase.delete(product.id as number).then(() => {
       this.getProducts()
       this.uploadPercent = 0
     })

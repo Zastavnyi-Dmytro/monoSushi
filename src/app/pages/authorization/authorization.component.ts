@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Auth, UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -30,10 +30,6 @@ export class AuthorizationComponent {
     this.initAuthForm()
   }
 
-  // ngOnDestroy(): void {
-  //   this.loginSubscription.unsubscribe()
-  // }
-
   initAuthForm(): void {
     this.authForm = this.fb.group({
       firstName: [null, [Validators.required]],
@@ -61,7 +57,7 @@ export class AuthorizationComponent {
       const currentUser = { ...user, uid: credential.user.uid }
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if (user && user['role'] === ROLE.USER) {
-        this.router.navigate(['/user-profile'])
+        this.router.navigate(['/user-profile/info'])
       }
       else if (user && user['role'] === ROLE.ADMIN) {
         this.router.navigate(['/admin/discounts'])

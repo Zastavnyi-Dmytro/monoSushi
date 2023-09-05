@@ -34,7 +34,7 @@
                 <td>Дії</td>
             </tr>
             <tr *ngFor="let item of adminDiscounts">
-                <td>{{item.date | date:'dd.y'}}</td>
+                <td>{{convertTimestampToDateTime(item.date) | date:'dd.y' }}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.title}}</td>
                 <td>{{item.description}}</td>

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { Products } from 'src/app/shared/interfaces/interfaces.component';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/products/product.service';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -13,15 +13,15 @@ import { ProductService } from 'src/app/shared/services/products/product.service
 export class ProductsComponent{
   public userProducts:Array<Products> = []
   public activeRolls = false
-  private eventSubscription!:Subscription
   public currentProduct!:Products
+  private eventSubscription!:Subscription
 
   constructor(
     private productService: ProductService,
+    private orderService: OrderService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private orderService: OrderService
-  ){
+  ){  
     this.eventSubscription = this.router.events.subscribe(event=>{
       if(event instanceof NavigationEnd){
         this.loadProducts()
@@ -30,20 +30,17 @@ export class ProductsComponent{
   }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(response=>{
-      this.currentProduct = response['productInfo']
-    })
+    this.loadProducts()
   }
 
   loadProducts():void{
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productService.getProductsByCategory(categoryName).subscribe(data=>{
-      this.userProducts = data
-      if(data[0].path == 'rolls'){
-        this.activeRolls = true
-      }
-      else{
-        this.activeRolls = false
+    this.productService.getProductsByCategory(categoryName).then(data=>{
+      this.userProducts = data.products
+      if (data.products.length > 0 && data.products[0].path === 'rolls') {
+        this.activeRolls = true;
+      } else {
+        this.activeRolls = false;
       }
     })
   }
@@ -78,9 +75,5 @@ export class ProductsComponent{
     else if(!value&&product.count>1){
       --product.count
     }
-  }
-
-  ngOnDestroy(): void {
-    this.eventSubscription.unsubscribe()
   }
 }

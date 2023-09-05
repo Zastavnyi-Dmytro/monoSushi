@@ -109,20 +109,20 @@
       "id": 4
     }
   ],
-  "auth" : [
+  "auth": [
     {
-      "id":1,
-      "email":"admin@gmail.com",
-      "password":"admin",
-      "fullName":"Petro Petriv",
-      "role":"ADMIN"
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "fullName": "Petro Petriv",
+      "role": "ADMIN"
     },
     {
-      "id":2,
-      "email":"user@gmail.com",
-      "password":"user",
-      "fullName":"Ivan Ivanov",
-      "role":"USER"
+      "id": 2,
+      "email": "user@gmail.com",
+      "password": "user",
+      "fullName": "Ivan Ivanov",
+      "role": "USER"
     }
   ]
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Discounts } from 'src/app/shared/interfaces/interfaces.component';
 import { DiscountService } from 'src/app/shared/services/discounts/discount.service';
 import { Storage, deleteObject, getDownloadURL, percentage, ref, uploadBytesResumable } from '@angular/fire/storage';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-admin-discounts',
@@ -12,7 +13,7 @@ import { Storage, deleteObject, getDownloadURL, percentage, ref, uploadBytesResu
 export class AdminDiscountsComponent {
   public addMenu!:boolean
   public editMode!:boolean
-  public editId!: number
+  public editId!: number|string
   public uploadPercent!: number
   public isUploaded!:boolean
   public showProgress!:boolean
@@ -25,7 +26,8 @@ export class AdminDiscountsComponent {
   constructor(
     public discountsBase: DiscountService,
     public fb: FormBuilder,
-    public storage: Storage
+    public storage: Storage,
+    public datePipe: DatePipe
   ) { }
   ngOnInit(): void {
     this.getDiscounts()
@@ -34,7 +36,7 @@ export class AdminDiscountsComponent {
 
   getDiscounts(): void {
     this.discountsBase.getDiscounts().subscribe(data => {
-      this.adminDiscounts = data
+      this.adminDiscounts = data as Discounts[]
     })
   }
 
@@ -54,19 +56,20 @@ export class AdminDiscountsComponent {
 
   addDiscount() {
     if (this.editMode) {
-      this.discountsBase.edit(this.discountForm.value, this.editId).subscribe(() => {
+      this.discountsBase.edit(this.discountForm.value, this.editId as string).then(() => {
         this.getDiscounts()
         this.discountForm.reset()
       })
       this.editMode = false
       this.addMenu = false
+      this.initDiscountForm()
     }
     else {
-      this.discountForm.value.date = new Date
-      this.discountsBase.create(this.discountForm.value).subscribe(() => {
+      this.discountsBase.create(this.discountForm.value).then(() => {
         this.getDiscounts()
         this.discountForm.reset()
         this.addMenu = false
+        this.initDiscountForm()
       })
     }
     this.isUploaded = false
@@ -89,7 +92,7 @@ export class AdminDiscountsComponent {
   }
 
   deleteDiscount(discount: Discounts): void {
-    this.discountsBase.delete(discount.id).subscribe(() => {
+    this.discountsBase.delete(discount.id as string).then(() => {
       this.getDiscounts()
       this.uploadPercent = 0
     })
@@ -151,5 +154,10 @@ export class AdminDiscountsComponent {
     })
     this.showProgress = false
     this.deletedImg = true
+  }
+
+  convertTimestampToDateTime(timestamp: any) {
+    const date = new Date(timestamp.seconds*1000);
+    return date;
   }
 }

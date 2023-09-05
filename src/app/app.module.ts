@@ -24,6 +24,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { WeCallModalComponent } from './pages/we-call-modal/we-call-modal.component';
 import { SharedModule } from './shared/shared-module';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { SharedModule } from './shared/shared-module';
     AboutusComponent,
     InterfacesComponent,
     ProductInfoComponent,
-    WeCallModalComponent
+    WeCallModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +55,7 @@ import { SharedModule } from './shared/shared-module';
     NoopAnimationsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

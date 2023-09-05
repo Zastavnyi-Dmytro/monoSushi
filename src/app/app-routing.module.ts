@@ -8,8 +8,6 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { DeliveryandpaymentComponent } from './pages/deliveryandpayment/deliveryandpayment.component';
 import { AboutusComponent } from './pages/aboutus/aboutus.component';
-import { ProductService } from './shared/services/products/product.service';
-import { DiscountService } from './shared/services/discounts/discount.service';
 import { authGuard } from './shared/guards/auth/auth.guard';
 
 
@@ -19,15 +17,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'discounts', component: DiscountsComponent },
   {
-    path: 'discounts/:name/:id', component: DiscountsInfoComponent, resolve: {
-      discountInfo: DiscountService
-    }
+    path: 'discounts/:name/:id', component: DiscountsInfoComponent
   },
   { path: 'products/:category', component: ProductsComponent },
   {
-    path: 'products/:category/:id', component: ProductInfoComponent, resolve: {
-      productInfo: ProductService
-    }
+    path: 'products/:category/:id', component: ProductInfoComponent
   },
   { path: 'delivery-and-payment', component: DeliveryandpaymentComponent },
   { path: 'about-us', component: AboutusComponent },

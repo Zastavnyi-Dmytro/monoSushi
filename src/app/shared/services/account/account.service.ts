@@ -12,8 +12,6 @@ export class AccountService {
   private url = environment.BACKEND_URL
   private api = { auth: `${this.url}/auth` }
 
-  private categories:Array<Category> = []
-
   constructor(
     private http: HttpClient
   ) { }

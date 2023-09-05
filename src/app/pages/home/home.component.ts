@@ -28,7 +28,7 @@ export class HomeComponent {
 
   getProducts():void{
     this.productBase.getProducts().subscribe(data=> {
-      this.userProducts = data
+      this.userProducts = data as Products[]
     })
   }
 

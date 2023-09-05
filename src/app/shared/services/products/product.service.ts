@@ -1,49 +1,68 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { Products } from '../../interfaces/interfaces.component';
 import { ProductsRequest } from '../../interfaces/interfaces.component';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { CollectionReference, DocumentData, DocumentReference, Firestore, addDoc, collection, collectionData, deleteDoc, doc, docData, getDoc, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService{
-  public url = environment.BACKEND_URL
-  public api = { products: `${this.url}/products` }
-
+  private productCollection: CollectionReference<DocumentData>
   public products:Array<Products> = []
 
   constructor(
-    public http: HttpClient
-  ) { }
-
-  getProducts():Observable<Products[]>{
-    return this.http.get<Products[]>(this.api.products)
+    private afs: Firestore
+  ) { 
+    this.productCollection = collection(this.afs, "products")
   }
 
-  getProductsByCategory(name:string):Observable<Products[]>{
-    return this.http.get<Products[]>(`${this.api.products}?category.path=${name}`)
+  getProducts(){
+    return collectionData(this.productCollection, {idField:'id'})
   }
 
-  getOne(id: number): Observable<Products> {
-    return this.http.get<Products>(`${this.api.products}/${id}`);
+
+  getOneProduct(id:string){
+    const productDocumentReference = doc(this.afs, `products/${id}`)
+    return docData(productDocumentReference, {idField:'id'})
   }
 
-  create(products:ProductsRequest):Observable<void> {
-    return this.http.post<void>(this.api.products, products)
+  create(products:ProductsRequest) {
+    return addDoc(this.productCollection, products)
   }
 
-  edit(products:ProductsRequest, id:number):Observable<Products>{
-    return this.http.patch<Products>(`${this.api.products}/${id}`, products)
+  edit(products:ProductsRequest, id:number){
+    const productDocumentReference = doc(this.afs, `products/${id}`)
+    return updateDoc(productDocumentReference, {...products})
   }
 
-  delete(id:number):Observable<void>{
-    return this.http.delete<void>(`${this.api.products}/${id}`)
+  delete(id:number){
+    const productDocumentReference = doc(this.afs, `products/${id}`)
+    return deleteDoc(productDocumentReference)
   }
+
+
+  async getProductsByCategory(category:string) {
+    try {
+      const querySnapshot = await getDocs(this.productCollection);
+      const products: Products[] = [];
   
-  resolve(route:ActivatedRouteSnapshot):Observable<Products>{
-    return this.http.get<Products>(`${this.api.products}/${route.paramMap.get('id')}`)
+      querySnapshot.forEach((doc) => {
+        const product = doc.data() as Products;
+        const path = product['category'];
+
+        if (path['path'] === category) {
+          products.push({
+            ...product,
+            id: doc.id,
+          });
+        }
+      });
+  
+      return { products };
+    } catch (error) {
+      console.error("Ошибка при получении данных из коллекции:", error);
+      throw error;
+    }
   }
 }

@@ -1,41 +1,40 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { Discounts } from '../../interfaces/interfaces.component';
 import { DiscountsRequest } from '../../interfaces/interfaces.component';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { CollectionReference, DocumentData, Firestore, addDoc, collection, collectionData, deleteDoc, doc, docData, updateDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DiscountService {
-  public url = environment.BACKEND_URL
-  public api = { discounts: `${this.url}/discounts` }
-
-  private discounts:Array<Discounts> = []
+  private discountCollection: CollectionReference<DocumentData>
+  public currentId!:string
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private afs: Firestore
+  ) { 
+    this.discountCollection = collection(this.afs, "discounts")
+   }
 
-  getDiscounts():Observable<Discounts[]>{
-    return this.http.get<Discounts[]>(this.api.discounts)
+  getDiscounts(){
+    return collectionData(this.discountCollection, {idField:'id'})
   }
 
-  create(blog:DiscountsRequest):Observable<void> {
-    return this.http.post<void>(this.api.discounts, blog)
+  getOneDiscount(id:string){
+    const discountDocumentReference = doc(this.afs, `discounts/${id}`)
+    return docData(discountDocumentReference, {idField:'id'})
   }
 
-  edit(blog:DiscountsRequest, id:number):Observable<Discounts>{
-    return this.http.patch<Discounts>(`${this.api.discounts}/${id}`, blog)
+  create(blog:DiscountsRequest){
+    return addDoc(this.discountCollection, blog)
   }
 
-  delete(id:number):Observable<void>{
-    return this.http.delete<void>(`${this.api.discounts}/${id}`)
+  edit(blog:DiscountsRequest, id:string){
+    const discountDocumentReference = doc(this.afs, `discounts/${id}`)
+    return updateDoc(discountDocumentReference, {...blog})
   }
 
-  resolve(route:ActivatedRouteSnapshot):Observable<Discounts>{
-    return this.http.get<Discounts>(`${this.api.discounts}/${route.paramMap.get('id')}`)
+  delete(id:string){
+    const discountDocumentReference = doc(this.afs, `discounts/${id}`)
+    return deleteDoc(discountDocumentReference)
   }
 }

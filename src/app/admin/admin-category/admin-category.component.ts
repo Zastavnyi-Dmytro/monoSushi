@@ -13,11 +13,12 @@ import { Storage, deleteObject, getDownloadURL, percentage, ref, uploadBytesResu
 export class AdminCategoryComponent {
   addMenu = false
   editMode = false
-  editId!: number
+  editId!: number | string
   uploadPercent!: number
   isUploaded = false
   showProgress!:boolean
   deletedImg = false
+  categoryNumber = 1
 
   public categoryForm!: FormGroup
 
@@ -35,7 +36,7 @@ export class AdminCategoryComponent {
 
   getCategories(): void {
     this.categoryBase.getCategory().subscribe(data => {
-      this.adminCategories = data
+      this.adminCategories = data as Category[]
     })
   }
 
@@ -53,7 +54,7 @@ export class AdminCategoryComponent {
 
   addCategory() {
     if (this.editMode) {
-      this.categoryBase.edit(this.categoryForm.value, this.editId).subscribe(() => {
+      this.categoryBase.edit(this.categoryForm.value, this.editId as string).then(() => {
         this.getCategories()
         this.categoryForm.reset()
       })
@@ -61,7 +62,7 @@ export class AdminCategoryComponent {
       this.addMenu = false
     }
     else {
-      this.categoryBase.create(this.categoryForm.value).subscribe(() => {
+      this.categoryBase.create(this.categoryForm.value).then(() => {
         this.getCategories()
         this.categoryForm.reset()
         this.addMenu = false
@@ -81,11 +82,11 @@ export class AdminCategoryComponent {
     this.isUploaded = true
     this.addMenu = true
     this.editMode = true
-    this.editId = category.id
+    this.editId = category.id as number
   }
 
   deleteCategory(category: Category): void {
-    this.categoryBase.delete(category.id).subscribe(() => {
+    this.categoryBase.delete(category.id as string).then(() => {
       this.getCategories()
       this.uploadPercent = 0
     })
